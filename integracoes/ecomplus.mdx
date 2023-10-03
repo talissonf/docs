@@ -1,7 +1,8 @@
 ---
-title: 'E-Com Plus'
-description: 'Saiba como integrar sua loja com Martan.'
+title: "E-Com Plus"
+description: "Saiba como integrar sua loja com Martan."
 ---
+
 Para utilizar o Martan em sua loja na E-Com Plus precisamos configurar alguns passos.
 Primeiramente precisamos instalar nosso aplicativo na sua loja, e após isso configuramos nossos widgets.
 
@@ -10,86 +11,60 @@ Primeiramente precisamos instalar nosso aplicativo na sua loja, e após isso con
 Passo 1: Instale o aplicativo Martan na sua loja, isso pode ser feito através do [market](https://market.e-com.plus/apps?title=martan). (Esse app é usado para sincronizar pedidos e produtos.)
 
 ### Configurar Aplicativo
+
 Passo 2: Configure seu token e o id da sua loja junto ao aplicativo instalado.
 Tokens podem ser encontrados [aqui](https://app.martan.app/settings).
 
-<Frame>
-  <img src="/images/ecomplus-config.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
+![title](/images/ecomplus-config.png)
 
+Após esta etapa o aplicativo está pronto para se comunicar com nossa API, sincronizando novos pedidos automaticamente.
 
+### Integrando com storefront
 
+Nosso Widget está disponível na versão mais recente do storefront.
+Basta procurar por Martan na aba de Widgets.
 
+![title](/images/ecomplus-config-widget.png)
 
-```bash
-mintlify dev
-```
+### Configurar Widgets
 
-The documentation website is now available at `http://localhost:3000`.
+Integrado ao storefront disponibilizamos dois tipos de widgets; Rating e Reviews.
+Rating é o widget que usamos para exibir média de avaliação no card dos produtos na sua loja e Reviews é o widget que usamos para exibir detalhe das avaliações.
+Após habilitar o Widget basta configurar quais widgets quer exibir e outras opcoes. Abaixo todas as opcoes de configuracao.
 
-### Custom Ports
+![title](/images/ecomplus-config-martan.png)
 
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
+## Configurações
+<ResponseField name="Id da Loja" type="number" required>
+  Identificador da Loja [Ver](https://app.martan.app/settings).
+</ResponseField>
+<ResponseField name="Widget Key" type="string" required>
+  Widget Key [Ver](https://app.martan.app/settings).
+</ResponseField>
+<ResponseField name="Web Id" type="string" required>
+  Web Id [Ver](https://app.martan.app/settings).
+</ResponseField>
+<ResponseField name="Exibir Reviews Na Pagina de Produtos" type="boolean" default="false">
+ Opção para habilitar exibicao do widget no storefront.
+</ResponseField>
+<ResponseField name="Exibir Média de Reviews no Card de Produtos" type="boolean" default="false">
+ Opção para habilitar exibicao do widget de avalição juntos aos produtos da loja.
+</ResponseField>
+<ResponseField name="Tamanho da Fonte" type="number" required>
+  Tamanho da fonte que usaremos para renderizar o icone de estrela no card dos produtos.
+</ResponseField>
+<ResponseField name="Cor do Icone" type="string" required>
+  Escolha qual cor usaremos para exibir no icone de estrela no card dos produtos.
+</ResponseField>
 
-```bash
-mintlify dev --port 3333
-```
+Após configurado as propriedades acima, o widget está pronto para ser exibido no seu template.
 
-You will see an error like this if you try to run Mintlify in a port that's already taken:
+### Widget Rating
+![title](/images/ecomplus-widget-rating.png)
 
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
+O widget de rating tem todas as suas customizações feitas diretamente no gerenciador de conteúdo do seu storefront, caso precise alterar cor da estrela exibida nos card de produtos ou tamanho do icone.
 
-## Mintlify Versions
+### Widget Reviews
+![title](/images/ecomplus-widget-reviews.png)
 
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
-
-<CodeGroup>
-
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
-</CodeGroup>
-
-## Deployment
-
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
-
-You should see the following if the deploy successfully went through:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Troubleshooting
-
-Here's how to solve some common problems when working with the CLI.
-
-<AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
-  </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
-
-Repeat step 3.
-
-  </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
-  </Accordion>
-</AccordionGroup>
-
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+O widget de reviews tem todas as suas customizações feitas dentro do [painel](https://app.martan.app/reviews/widgets) do Martan, através do storefront você consegue apenas habilitar ou desabilitar sua exibição no storefront.
